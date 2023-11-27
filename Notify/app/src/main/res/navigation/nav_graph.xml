@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_notes" >
+
+    <fragment
+        android:id="@+id/nav_notes"
+        android:name="com.odesa.notify.ui.NotesFragment.NotesFragment"
+        android:label="@string/notes" />
+
+    <fragment
+        android:id="@+id/nav_reminder"
+        android:name="com.odesa.notify.ui.RemindersFragment.RemindersFragment"
+        android:label="@string/reminder" />
+
+    <fragment
+        android:id="@+id/nav_archive"
+        android:name="com.odesa.notify.ui.ArchiveFragment.ArchiveFragment"
+        android:label="@string/archive" />
+
+    <fragment
+        android:id="@+id/nav_trash"
+        android:name="com.odesa.notify.ui.TrashFragment.TrashFragment"
+        android:label="@string/trash" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.odesa.notify.ui.SettingsFragment.SettingsFragment"
+        android:label="@string/settings" />
+
+</navigation>

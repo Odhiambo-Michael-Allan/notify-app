@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/todo"
+        android:icon="@drawable/todo_icon_24dp"
+        android:title="@string/todo"
+        android:contentDescription="@string/content_description_todo"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/microphone"
+        android:icon="@drawable/mic_24_dp"
+        android:title="@string/microphone"
+        android:contentDescription="@string/content_description_microphone"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/insert_photo"
+        android:icon="@drawable/insert_photo_24"
+        android:title="@string/insert_photo"
+        android:contentDescription="@string/content_description_insert_photo"
+        app:showAsAction="ifRoom"/>
+</menu>
