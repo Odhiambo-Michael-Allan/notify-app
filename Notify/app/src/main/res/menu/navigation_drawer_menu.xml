@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/main_item"
-        android:title="@string/mail_subheader_title">
+        android:title="" >
         <menu>
             <item
-                android:id="@+id/inbox_item"
-                android:icon="@drawable/ic_add_24dp"
-                android:title="@string/app_name"
-                android:checkable="true"/>
+                android:id="@+id/nav_notes"
+                android:icon="@drawable/ic_notes_fragment"
+                android:title="@string/notes" />
+
             <item
-                android:id="@+id/outbox_item"
-                android:icon="@drawable/ic_add_24dp"
-                android:title="@string/app_name"
-                android:checkable="true"/>
-            <item
-                android:id="@+id/favourites_item"
-                android:icon="@drawable/ic_add_24dp"
-                android:title="@string/app_name"
-                android:checkable="true"/>
+                android:id="@+id/nav_reminder"
+                android:icon="@drawable/ic_reminders_fragment"
+                android:title="@string/reminder" />
         </menu>
     </item>
 
     <item
-        android:id="@+id/notes"
-        android:icon="@drawable/"
+        android:id="@+id/nav_archive"
+        android:icon="@drawable/ic_archive_fragment"
+        android:title="@string/archive" />
+
+    <item
+        android:id="@+id/nav_trash"
+        android:icon="@drawable/ic_trash_fragment"
+        android:title="@string/trash" />
+
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings_fragment"
+        android:title="@string/settings" />
 
 </menu>

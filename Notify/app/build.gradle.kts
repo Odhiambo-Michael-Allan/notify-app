@@ -51,6 +51,8 @@ dependencies {
     val roomVersion = "2.6.0"
     val lifecycleVersion = "2.6.2"
     val navigationVersion = "2.7.5"
+    val espressoVersion = "3.5.1"
+    val hamcrestVersion = "2.2"
 
     // App Dependencies.
     implementation( "androidx.core:core-ktx:1.12.0" )
@@ -74,10 +76,12 @@ dependencies {
 
     // Local Unit Tests Dependencies
     testImplementation( "junit:junit:4.13.2" )
+    testImplementation( "org.hamcrest:hamcrest-core:2.2" )
 
     // AndroidX Test - JVM Testing
 
     // AndroidX Test - Instrumented Testing
     androidTestImplementation( "androidx.test.ext:junit:1.1.5" )
-    androidTestImplementation( "androidx.test.espresso:espresso-core:3.5.1" )
+    androidTestImplementation( "androidx.test.espresso:espresso-core:$espressoVersion" )
+    androidTestImplementation( "androidx.test.espresso:espresso-contrib:$espressoVersion" )
 }

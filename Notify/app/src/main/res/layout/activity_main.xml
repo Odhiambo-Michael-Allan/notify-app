@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
@@ -20,13 +21,12 @@
             android:fitsSystemWindows="true" >
 
             <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/topAppBar"
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="?attr/actionBarSize"
                 app:title="@string/app_name"
-                app:titleCentered="true"
-                app:menu="@menu/top_app_bar_menu" />
+                app:titleCentered="true" />
 
         </com.google.android.material.appbar.AppBarLayout>
         
@@ -35,12 +35,12 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="100dp"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_graph" />
+            app:navGraph="@navigation/nav_graph"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
         <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
+            android:id="@+id/bottom_app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -48,10 +48,11 @@
             app:menu="@menu/bottom_app_bar_menu"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_note_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_add_24dp"
-            app:layout_anchor="@id/bottomAppBar"
+            app:layout_anchor="@id/bottom_app_bar"
             android:contentDescription="@string/add_note_fab" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -62,6 +63,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:backgroundTint="?attr/colorSurfaceContainer"
-        app:menu="@menu/navigation_drawer_menu" />
+        app:menu="@menu/navigation_drawer_menu"
+        app:headerLayout="@layout/nav_drawer_header_layout" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

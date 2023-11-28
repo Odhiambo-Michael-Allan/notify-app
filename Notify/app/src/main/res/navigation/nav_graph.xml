@@ -6,17 +6,31 @@
 
     <fragment
         android:id="@+id/nav_notes"
-        android:name="com.odesa.notify.ui.NotesFragment.NotesFragment"
-        android:label="@string/notes" />
+        android:name="com.odesa.notify.ui.notesFragment.NotesFragment"
+        android:label="@string/notes" >
+        <action
+            android:id="@+id/action_nav_notes_to_nav_add_edit_note"
+            app:destination="@id/nav_add_edit_note" />
+        <action
+            android:id="@+id/action_nav_notes_to_nav_task"
+            app:destination="@id/nav_tasks" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_reminder"
-        android:name="com.odesa.notify.ui.RemindersFragment.RemindersFragment"
-        android:label="@string/reminder" />
+        android:name="com.odesa.notify.ui.remindersFragment.RemindersFragment"
+        android:label="@string/reminder" >
+        <action
+            android:id="@+id/action_nav_reminder_to_nav_task"
+            app:destination="@id/nav_tasks" />
+        <action
+            android:id="@+id/action_nav_reminder_to_nav_add_edit_note"
+            app:destination="@id/nav_add_edit_note" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_archive"
-        android:name="com.odesa.notify.ui.ArchiveFragment.ArchiveFragment"
+        android:name="com.odesa.notify.ui.archiveFragment.ArchiveFragment"
         android:label="@string/archive" />
 
     <fragment
@@ -26,7 +40,17 @@
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.odesa.notify.ui.SettingsFragment.SettingsFragment"
+        android:name="com.odesa.notify.ui.settingsFragment.SettingsFragment"
         android:label="@string/settings" />
+
+    <fragment
+        android:id="@+id/nav_add_edit_note"
+        android:name="com.odesa.notify.ui.addEditNoteFragment.AddEditNoteFragment"
+        android:label="@string/add_edit_note" />
+
+    <fragment
+        android:id="@+id/nav_tasks"
+        android:name="com.odesa.notify.ui.taskFragment.TaskFragment"
+        android:label="@string/task" />
 
 </navigation>

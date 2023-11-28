@@ -19,7 +19,24 @@
         android:id="@+id/view"
         android:title="@string/view"
         android:contentDescription="@string/content_description_view"
-        app:showAsAction="never" />
+        app:showAsAction="never">
+
+        <menu>
+            <item
+                android:id="@+id/simple_list"
+                android:title="@string/simple_list"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/list"
+                android:title="@string/list"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/grid"
+                android:title="@string/grid"
+                android:checkable="true"/>
+        </menu>
+
+    </item>
 
     <item
         android:id="@+id/sort"
