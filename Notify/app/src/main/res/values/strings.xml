@@ -26,6 +26,7 @@
     <string name="grid">Grid</string>
     <string name="add_edit_note">Edit Note</string>
     <string name="task">Task</string>
+    <string name="empty_trash">Empty Trash</string>
 
 
     <string name="mail_subheader_title">Mail</string>

@@ -26,15 +26,25 @@ class RemindersFragment : Fragment() {
 
     override fun onViewCreated( view: View, savedInstanceState: Bundle? ) {
         super.onViewCreated( view, savedInstanceState )
-        ( requireActivity() as MainActivity ).getFabStatus().observe( viewLifecycleOwner ) {
-            event -> event.getContentIfNotHandled()?.let {
-            if ( it ) navigateToAddEditNotesFragment() }
+        ( requireActivity() as MainActivity ).apply {
+            fabClicked.observe( viewLifecycleOwner ) {
+                event -> event.getContentIfNotHandled()?.let { if ( it ) navigateToAddEditNotesFragment() }
+        }
+            tasksMenuClicked.observe( viewLifecycleOwner ) {
+                event -> event.getContentIfNotHandled()?.let { if ( it ) navigateToTasksFragment() }
+            }
         }
     }
 
     private fun navigateToAddEditNotesFragment() {
         findNavController().navigate(
             RemindersFragmentDirections.actionNavReminderToNavAddEditNote() )
+    }
+
+    private fun navigateToTasksFragment() {
+        findNavController().navigate(
+            RemindersFragmentDirections.actionNavReminderToNavTask()
+        )
     }
     companion object {
 

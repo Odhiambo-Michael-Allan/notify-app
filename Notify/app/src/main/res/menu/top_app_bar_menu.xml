@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <item
-        android:id="@+id/search"
+        android:id="@+id/search_menu"
         android:icon="@drawable/ic_search_24dp"
         android:title="@string/search"
         android:contentDescription="@string/content_description_search"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/edit"
+        android:id="@+id/edit_menu"
         android:title="@string/edit"
         android:contentDescription="@string/content_description_edit"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/view"
+        android:id="@+id/view_menu"
         android:title="@string/view"
         android:contentDescription="@string/content_description_view"
         app:showAsAction="never">
@@ -39,9 +40,17 @@
     </item>
 
     <item
-        android:id="@+id/sort"
+        android:id="@+id/sort_menu"
         android:title="@string/sort"
         android:contentDescription="@string/content_description_sort"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/empty_trash_menu"
+        android:title="@string/empty_trash"
+        android:contentDescription="@string/empty_trash"
+        android:visible="false"
+        app:showAsAction="never"
+        tools:visible="true" />
 
 </menu>

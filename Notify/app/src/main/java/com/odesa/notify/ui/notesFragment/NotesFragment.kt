@@ -25,10 +25,11 @@ class NotesFragment : Fragment() {
     override fun onViewCreated( view: View, savedInstanceState: Bundle? ) {
         super.onViewCreated( view, savedInstanceState )
         ( requireActivity() as MainActivity ).apply {
-            getFabStatus().observe( viewLifecycleOwner ) {
-                    event -> event.getContentIfNotHandled()?.let { if ( it ) navigateToAddEditNoteFragment() }
+            fabClicked.observe( viewLifecycleOwner ) {
+                    event -> event.getContentIfNotHandled()?.let { if ( it )
+                        navigateToAddEditNoteFragment() }
             }
-            getTasksMenuItemStatus().observe( viewLifecycleOwner ) {
+            tasksMenuClicked.observe( viewLifecycleOwner ) {
                 event -> event.getContentIfNotHandled()?.let { if ( it ) navigateToTasksFragment() }
             }
         }

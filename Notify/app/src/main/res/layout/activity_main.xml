@@ -26,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:minHeight="?attr/actionBarSize"
                 app:title="@string/app_name"
-                app:titleCentered="true" />
+                app:titleCentered="true"
+                app:menu="@menu/top_app_bar_menu" />
 
         </com.google.android.material.appbar.AppBarLayout>
         

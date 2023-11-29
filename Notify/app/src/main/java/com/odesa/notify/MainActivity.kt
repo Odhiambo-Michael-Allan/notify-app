@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
 
     private val _fabClicked = MutableLiveData<Event<Boolean>>()
     private val _tasksMenuClicked = MutableLiveData<Event<Boolean>>()
-    private val fabClicked: LiveData<Event<Boolean>>
+    val fabClicked
         get() = _fabClicked
-    private val tasksMenuClicked
+    val tasksMenuClicked
         get() = _tasksMenuClicked
 
     override fun onCreate( savedInstanceState: Bundle? ) {
@@ -74,7 +74,4 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    fun getFabStatus(): LiveData<Event<Boolean>> = fabClicked
-
-    fun getTasksMenuItemStatus() = tasksMenuClicked
 }

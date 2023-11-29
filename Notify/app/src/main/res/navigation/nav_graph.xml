@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_nav_notes_to_nav_task"
             app:destination="@id/nav_tasks" />
+        <action
+            android:id="@+id/action_nav_notes_to_nav_search"
+            app:destination="@id/nav_search" />
     </fragment>
 
     <fragment
@@ -26,16 +29,23 @@
         <action
             android:id="@+id/action_nav_reminder_to_nav_add_edit_note"
             app:destination="@id/nav_add_edit_note" />
+        <action
+            android:id="@+id/action_nav_reminder_to_nav_search"
+            app:destination="@id/nav_search" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_archive"
         android:name="com.odesa.notify.ui.archiveFragment.ArchiveFragment"
-        android:label="@string/archive" />
+        android:label="@string/archive" >
+        <action
+            android:id="@+id/action_nav_archive_to_nav_search"
+            app:destination="@id/nav_search" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_trash"
-        android:name="com.odesa.notify.ui.TrashFragment.TrashFragment"
+        android:name="com.odesa.notify.ui.trashFragment.TrashFragment"
         android:label="@string/trash" />
 
     <fragment
@@ -52,5 +62,10 @@
         android:id="@+id/nav_tasks"
         android:name="com.odesa.notify.ui.taskFragment.TaskFragment"
         android:label="@string/task" />
+
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.odesa.notify.ui.searchFragment.SearchFragment"
+        android:label="@string/search" />
 
 </navigation>
