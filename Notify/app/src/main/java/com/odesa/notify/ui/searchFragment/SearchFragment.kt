@@ -28,35 +28,35 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated( view: View, savedInstanceState: Bundle? ) {
         super.onViewCreated( view, savedInstanceState )
-        with( requireActivity() ) {
-            findViewById<BottomAppBar>( R.id.bottom_app_bar )
-                .visibility = View.GONE
-            findViewById<FloatingActionButton>( R.id.add_note_fab )
-                .visibility = View.GONE
-            findViewById<MaterialToolbar>( R.id.toolbar ).apply {
-                menu.findItem( R.id.search_menu ).isVisible = false
-                menu.findItem( R.id.edit_menu ).isVisible = false
-                menu.findItem( R.id.view_menu ).isVisible = false
-                menu.findItem( R.id.sort_menu ).isVisible = false
-            }
-        }
+//        with( requireActivity() ) {
+//            findViewById<BottomAppBar>( R.id.bottom_app_bar )
+//                .visibility = View.GONE
+//            findViewById<FloatingActionButton>( R.id.add_note_fab )
+//                .visibility = View.GONE
+//            findViewById<MaterialToolbar>( R.id.toolbar ).apply {
+//                menu.findItem( R.id.search_menu ).isVisible = false
+//                menu.findItem( R.id.edit_menu ).isVisible = false
+//                menu.findItem( R.id.view_menu ).isVisible = false
+//                menu.findItem( R.id.sort_menu ).isVisible = false
+//            }
+//        }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        with( requireActivity() ) {
-            findViewById<BottomAppBar>( R.id.bottom_app_bar )
-                .visibility = View.VISIBLE
-            findViewById<FloatingActionButton>( R.id.add_note_fab )
-                .visibility = View.VISIBLE
-            findViewById<MaterialToolbar>( R.id.toolbar ).apply {
-                menu.findItem( R.id.search_menu ).isVisible = true
-                menu.findItem( R.id.edit_menu ).isVisible = true
-                menu.findItem( R.id.view_menu ).isVisible = true
-                menu.findItem( R.id.sort_menu ).isVisible = true
-            }
-        }
-    }
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        with( requireActivity() ) {
+//            findViewById<BottomAppBar>( R.id.bottom_app_bar )
+//                .visibility = View.VISIBLE
+//            findViewById<FloatingActionButton>( R.id.add_note_fab )
+//                .visibility = View.VISIBLE
+//            findViewById<MaterialToolbar>( R.id.toolbar ).apply {
+//                menu.findItem( R.id.search_menu ).isVisible = true
+//                menu.findItem( R.id.edit_menu ).isVisible = true
+//                menu.findItem( R.id.view_menu ).isVisible = true
+//                menu.findItem( R.id.sort_menu ).isVisible = true
+//            }
+//        }
+//    }
 
     companion object {
         @JvmStatic

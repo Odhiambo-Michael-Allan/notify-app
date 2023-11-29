@@ -36,8 +36,8 @@ class ArchiveFragment : Fragment() {
             searchMenuClicked.observe( viewLifecycleOwner ) { event ->
                 event.getContentIfNotHandled()?.let { if ( it ) navigateToSearchFragment() }
             }
-            findViewById<BottomAppBar>( R.id.bottom_app_bar ).visibility = View.GONE
-            findViewById<FloatingActionButton>( R.id.add_note_fab ).visibility = View.GONE
+//            findViewById<BottomAppBar>( R.id.bottom_app_bar ).visibility = View.GONE
+//            findViewById<FloatingActionButton>( R.id.add_note_fab ).visibility = View.GONE
         }
     }
 
@@ -45,15 +45,15 @@ class ArchiveFragment : Fragment() {
         findNavController().navigate( ArchiveFragmentDirections.actionNavArchiveToNavSearch() )
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        with ( requireActivity() ) {
-            findViewById<BottomAppBar>( R.id.bottom_app_bar )
-                .visibility = View.VISIBLE
-            findViewById<FloatingActionButton>( R.id.add_note_fab )
-                .visibility = View.VISIBLE
-        }
-    }
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        with ( requireActivity() ) {
+//            findViewById<BottomAppBar>( R.id.bottom_app_bar )
+//                .visibility = View.VISIBLE
+//            findViewById<FloatingActionButton>( R.id.add_note_fab )
+//                .visibility = View.VISIBLE
+//        }
+//    }
 
     companion object {
 

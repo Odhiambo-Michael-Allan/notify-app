@@ -6,14 +6,19 @@ import android.view.MenuItem
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.odesa.notify.databinding.ActivityMainBinding
 import com.odesa.notify.utils.Event
 import timber.log.Timber
@@ -43,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         setupAppBar()
         setupAddNoteFab()
         setupTasksMenu()
+        setupNavControllerListener()
     }
 
     private fun setupAppBar() {
@@ -75,6 +81,98 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
+
+    private fun setupNavControllerListener() {
+        findNavController( R.id.nav_host_fragment ).addOnDestinationChangedListener { _, destination, _ ->
+            configureActivityViewsDependingOn( destination.id )
+        }
+    }
+
+    private fun configureActivityViewsDependingOn( destinationId: Int ) {
+        when ( destinationId ) {
+            R.id.nav_notes -> configureNotesFragmentViews()
+            R.id.nav_reminder -> configureReminderFragmentViews()
+            R.id.nav_archive -> configureArchiveFragmentViews()
+            R.id.nav_trash -> configureTrashFragmentViews()
+            R.id.nav_settings -> configureSettingsFragmentViews()
+            R.id.nav_search -> configureSearchFragmentViews()
+//            R.id.nav_tasks -> configureTasksFragmentViews()
+        }
+    }
+
+    private fun configureNotesFragmentViews() {
+        showAllViews()
+    }
+
+    private fun configureReminderFragmentViews() {
+        showAllViews()
+    }
+
+    private fun showAllViews() {
+        hideBottomAppBar( false )
+        showAllMenus()
+    }
+
+    private fun configureTrashFragmentViews() {
+        hideBottomAppBar( true )
+        showTrashFragmentMenus()
+    }
+
+    private fun configureArchiveFragmentViews() {
+        hideBottomAppBar( true )
+        showAllMenus()
+    }
+
+    private fun configureSettingsFragmentViews() {
+        hideBottomAppBar( true )
+        hideAllMenus()
+    }
+
+    private fun configureSearchFragmentViews() {
+        hideBottomAppBar( true )
+        hideAllMenus()
+    }
+
+    private fun hideBottomAppBar( hide: Boolean ) {
+        if ( hide ) {
+            findViewById<BottomAppBar>( R.id.bottom_app_bar ).visibility = View.GONE
+            findViewById<FloatingActionButton>( R.id.add_note_fab ).visibility = View.GONE
+        } else {
+            findViewById<BottomAppBar>( R.id.bottom_app_bar ).visibility = View.VISIBLE
+            findViewById<FloatingActionButton>( R.id.add_note_fab ).visibility = View.VISIBLE
+        }
+    }
+
+    private fun showAllMenus() {
+        findViewById<MaterialToolbar>( R.id.toolbar ).apply {
+            menu.findItem( R.id.search_menu ).isVisible = true
+            menu.findItem( R.id.edit_menu ).isVisible = true
+            menu.findItem( R.id.view_menu ).isVisible = true
+            menu.findItem( R.id.sort_menu ).isVisible = true
+            menu.findItem( R.id.empty_trash_menu ).isVisible = false
+        }
+    }
+
+    private fun showTrashFragmentMenus() {
+        findViewById<MaterialToolbar>( R.id.toolbar ).apply {
+            menu.findItem( R.id.search_menu ).isVisible = false
+            menu.findItem( R.id.edit_menu ).isVisible = false
+            menu.findItem( R.id.view_menu ).isVisible = false
+            menu.findItem( R.id.sort_menu ).isVisible = false
+            menu.findItem( R.id.empty_trash_menu ).isVisible = true
+        }
+    }
+
+    private fun hideAllMenus() {
+        findViewById<MaterialToolbar>( R.id.toolbar ).apply {
+            menu.findItem( R.id.search_menu ).isVisible = false
+            menu.findItem( R.id.edit_menu ).isVisible = false
+            menu.findItem( R.id.view_menu ).isVisible = false
+            menu.findItem( R.id.sort_menu ).isVisible = false
+            menu.findItem( R.id.empty_trash_menu ).isVisible = false
+        }
+    }
+
 
     override fun onSupportNavigateUp(): Boolean {
         return findNavController( R.id.nav_host_fragment ).navigateUp( appBarConfiguration ) ||

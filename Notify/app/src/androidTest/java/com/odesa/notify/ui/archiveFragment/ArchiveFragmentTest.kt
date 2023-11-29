@@ -28,11 +28,11 @@ class ArchiveFragmentTest {
             withContentDescription(
                 activityScenario.getToolbarNavigationContentDescription()
             )
-        ).perform(click())
+        ).perform( click() )
         onView( withId( R.id.nav_archive ) )
             .perform( click() )
         onView( withId( R.id.bottom_app_bar ) )
-            .check( matches(not( isDisplayed() ) ) )
+            .check( matches( not( isDisplayed() ) ) )
         activityScenario.close()
     }
 
