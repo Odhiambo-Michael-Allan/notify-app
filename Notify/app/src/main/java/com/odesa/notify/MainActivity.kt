@@ -16,6 +16,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.odesa.notify.databinding.ActivityMainBinding
 import com.odesa.notify.utils.Event
+import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,10 +26,13 @@ class MainActivity : AppCompatActivity() {
 
     private val _fabClicked = MutableLiveData<Event<Boolean>>()
     private val _tasksMenuClicked = MutableLiveData<Event<Boolean>>()
+    private val _searchMenuClicked = MutableLiveData<Event<Boolean>>()
     val fabClicked
         get() = _fabClicked
     val tasksMenuClicked
         get() = _tasksMenuClicked
+    val searchMenuClicked
+        get() = _searchMenuClicked
 
     override fun onCreate( savedInstanceState: Bundle? ) {
         enableEdgeToEdge()
@@ -64,6 +68,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupSearchMenu() {
+        binding.toolbar.menu.findItem( R.id.search_menu ).setOnMenuItemClickListener {
+            Timber.d( "Search Menu Clicked. Sending notification to observers" )
+            _searchMenuClicked.value = Event( true )
+            true
+        }
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         return findNavController( R.id.nav_host_fragment ).navigateUp( appBarConfiguration ) ||
                 super.onSupportNavigateUp()
@@ -71,6 +83,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu( menu: Menu? ): Boolean {
         menuInflater.inflate( R.menu.top_app_bar_menu, menu )
+        setupSearchMenu()
         return true
     }
 

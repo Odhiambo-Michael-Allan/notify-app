@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.odesa.notify.MainActivity
 import com.odesa.notify.R
 import com.odesa.notify.databinding.FragmentArchiveBinding
+import com.odesa.notify.ui.remindersFragment.RemindersFragmentDirections
 
 class ArchiveFragment : Fragment() {
 
@@ -29,17 +32,27 @@ class ArchiveFragment : Fragment() {
 
     override fun onViewCreated( view: View, savedInstanceState: Bundle? ) {
         super.onViewCreated( view, savedInstanceState )
-        requireActivity().findViewById<BottomAppBar>( R.id.bottom_app_bar ).visibility = View.GONE
-        requireActivity().findViewById<FloatingActionButton>( R.id.add_note_fab )
-            .visibility = View.GONE
+        with ( requireActivity() as MainActivity ) {
+            searchMenuClicked.observe( viewLifecycleOwner ) { event ->
+                event.getContentIfNotHandled()?.let { if ( it ) navigateToSearchFragment() }
+            }
+            findViewById<BottomAppBar>( R.id.bottom_app_bar ).visibility = View.GONE
+            findViewById<FloatingActionButton>( R.id.add_note_fab ).visibility = View.GONE
+        }
+    }
+
+    private fun navigateToSearchFragment() {
+        findNavController().navigate( ArchiveFragmentDirections.actionNavArchiveToNavSearch() )
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        requireActivity().findViewById<BottomAppBar>( R.id.bottom_app_bar )
-            .visibility = View.VISIBLE
-        requireActivity().findViewById<FloatingActionButton>( R.id.add_note_fab )
-            .visibility = View.VISIBLE
+        with ( requireActivity() ) {
+            findViewById<BottomAppBar>( R.id.bottom_app_bar )
+                .visibility = View.VISIBLE
+            findViewById<FloatingActionButton>( R.id.add_note_fab )
+                .visibility = View.VISIBLE
+        }
     }
 
     companion object {

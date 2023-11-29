@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.odesa.notify.MainActivity
 import com.odesa.notify.R
 import com.odesa.notify.databinding.FragmentRemindersBinding
+import com.odesa.notify.ui.notesFragment.NotesFragmentDirections
 
 
 class RemindersFragment : Fragment() {
@@ -26,12 +27,15 @@ class RemindersFragment : Fragment() {
 
     override fun onViewCreated( view: View, savedInstanceState: Bundle? ) {
         super.onViewCreated( view, savedInstanceState )
-        ( requireActivity() as MainActivity ).apply {
+        with ( requireActivity() as MainActivity ) {
             fabClicked.observe( viewLifecycleOwner ) {
                 event -> event.getContentIfNotHandled()?.let { if ( it ) navigateToAddEditNotesFragment() }
         }
             tasksMenuClicked.observe( viewLifecycleOwner ) {
                 event -> event.getContentIfNotHandled()?.let { if ( it ) navigateToTasksFragment() }
+            }
+            searchMenuClicked.observe( viewLifecycleOwner ) {
+                event -> event.getContentIfNotHandled()?.let { if ( it ) navigateToSearchFragment() }
             }
         }
     }
@@ -45,6 +49,10 @@ class RemindersFragment : Fragment() {
         findNavController().navigate(
             RemindersFragmentDirections.actionNavReminderToNavTask()
         )
+    }
+
+    private fun navigateToSearchFragment() {
+        findNavController().navigate( RemindersFragmentDirections.actionNavReminderToNavSearch() )
     }
     companion object {
 

@@ -20,6 +20,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField( "boolean", "DEBUG", "true" )
+        }
+
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -27,6 +31,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -53,6 +61,7 @@ dependencies {
     val navigationVersion = "2.7.5"
     val espressoVersion = "3.5.1"
     val hamcrestVersion = "2.2"
+    val timberVersion = "5.0.1"
 
     // App Dependencies.
     implementation( "androidx.core:core-ktx:1.12.0" )
@@ -60,6 +69,7 @@ dependencies {
     implementation( "com.google.android.material:material:1.12.0-alpha01" )
     implementation( "androidx.constraintlayout:constraintlayout:2.1.4" )
     implementation( "androidx.drawerlayout:drawerlayout:1.2.0" )
+    implementation( "com.jakewharton.timber:timber:$timberVersion" )
 
     // Android Architecture Components
     kapt( "androidx.room:room-compiler:$roomVersion" )
@@ -76,7 +86,7 @@ dependencies {
 
     // Local Unit Tests Dependencies
     testImplementation( "junit:junit:4.13.2" )
-    testImplementation( "org.hamcrest:hamcrest-core:2.2" )
+    testImplementation( "org.hamcrest:hamcrest-core:$hamcrestVersion" )
 
     // AndroidX Test - JVM Testing
 

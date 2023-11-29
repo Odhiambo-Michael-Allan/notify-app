@@ -1,13 +1,17 @@
 package com.odesa.notify.ui.notesFragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.appbar.MaterialToolbar
 import com.odesa.notify.MainActivity
+import com.odesa.notify.R
 import com.odesa.notify.databinding.FragmentNotesBinding
+import timber.log.Timber
 
 class NotesFragment : Fragment() {
 
@@ -24,13 +28,16 @@ class NotesFragment : Fragment() {
 
     override fun onViewCreated( view: View, savedInstanceState: Bundle? ) {
         super.onViewCreated( view, savedInstanceState )
-        ( requireActivity() as MainActivity ).apply {
+        with ( requireActivity() as MainActivity ) {
             fabClicked.observe( viewLifecycleOwner ) {
                     event -> event.getContentIfNotHandled()?.let { if ( it )
                         navigateToAddEditNoteFragment() }
             }
             tasksMenuClicked.observe( viewLifecycleOwner ) {
                 event -> event.getContentIfNotHandled()?.let { if ( it ) navigateToTasksFragment() }
+            }
+            searchMenuClicked.observe( viewLifecycleOwner ) {
+                event -> event.getContentIfNotHandled()?.let { if ( it ) navigateToSearchFragment() }
             }
         }
     }
@@ -42,6 +49,11 @@ class NotesFragment : Fragment() {
     private fun navigateToTasksFragment() {
         findNavController().navigate( NotesFragmentDirections.actionNavNotesToNavTask() )
     }
+
+    private fun navigateToSearchFragment() {
+        findNavController().navigate( NotesFragmentDirections.actionNavNotesToNavSearch() )
+    }
+
 
     companion object {
 

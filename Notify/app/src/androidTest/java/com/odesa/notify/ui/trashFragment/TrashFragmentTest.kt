@@ -46,7 +46,7 @@ class TrashFragmentTest {
                 activityScenario.getToolbarNavigationContentDescription()
             )
         ).perform( click() )
-        onView( withId( R.id.nav_archive ) )
+        onView( withId( R.id.nav_trash ) )
             .perform( click() )
         onView( withId( R.id.add_note_fab ) )
             .check( matches( not( isDisplayed() ) ) )
