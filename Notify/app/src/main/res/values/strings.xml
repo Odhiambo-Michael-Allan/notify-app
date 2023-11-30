@@ -27,7 +27,9 @@
     <string name="add_edit_note">Edit Note</string>
     <string name="task">Task</string>
     <string name="empty_trash">Empty Trash</string>
-
+    <string name="pin">Pin</string>
+    <string name="add_content">Add Content</string>
+    <string name="background_palette">Background Palette</string>
 
     <string name="mail_subheader_title">Mail</string>
     <!-- TODO: Remove or change this placeholder text -->

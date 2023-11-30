@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_trash -> configureTrashFragmentViews()
             R.id.nav_settings -> configureSettingsFragmentViews()
             R.id.nav_search -> configureSearchFragmentViews()
-//            R.id.nav_tasks -> configureTasksFragmentViews()
+            R.id.nav_tasks -> configureTasksFragmentViews()
         }
     }
 
@@ -133,18 +133,34 @@ class MainActivity : AppCompatActivity() {
         hideAllMenus()
     }
 
-    private fun hideBottomAppBar( hide: Boolean ) {
-        if ( hide ) {
-            findViewById<BottomAppBar>( R.id.bottom_app_bar ).visibility = View.GONE
-            findViewById<FloatingActionButton>( R.id.add_note_fab ).visibility = View.GONE
-        } else {
-            findViewById<BottomAppBar>( R.id.bottom_app_bar ).visibility = View.VISIBLE
-            findViewById<FloatingActionButton>( R.id.add_note_fab ).visibility = View.VISIBLE
+    private fun configureTasksFragmentViews() {
+        hideFab( true )
+        with ( binding.bottomAppBar ) {
+            menu.findItem( R.id.nav_tasks ).isVisible = false
+            menu.findItem( R.id.microphone_menu ).isVisible = false
+            title
         }
     }
 
+    private fun hideBottomAppBar( hide: Boolean ) {
+        if ( hide ) {
+            binding.bottomAppBar.visibility = View.GONE
+            hideFab( true )
+        } else {
+            binding.bottomAppBar.visibility = View.VISIBLE
+            hideFab( false )
+        }
+    }
+
+    private fun hideFab( hide: Boolean ) {
+        if ( hide )
+            binding.addNoteFab.visibility = View.GONE
+        else
+            binding.addNoteFab.visibility = View.VISIBLE
+    }
+
     private fun showAllMenus() {
-        findViewById<MaterialToolbar>( R.id.toolbar ).apply {
+        with ( binding.toolbar ) {
             menu.findItem( R.id.search_menu ).isVisible = true
             menu.findItem( R.id.edit_menu ).isVisible = true
             menu.findItem( R.id.view_menu ).isVisible = true
@@ -154,7 +170,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showTrashFragmentMenus() {
-        findViewById<MaterialToolbar>( R.id.toolbar ).apply {
+        with( binding.toolbar ) {
             menu.findItem( R.id.search_menu ).isVisible = false
             menu.findItem( R.id.edit_menu ).isVisible = false
             menu.findItem( R.id.view_menu ).isVisible = false
@@ -164,7 +180,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hideAllMenus() {
-        findViewById<MaterialToolbar>( R.id.toolbar ).apply {
+        with( binding.toolbar ) {
             menu.findItem( R.id.search_menu ).isVisible = false
             menu.findItem( R.id.edit_menu ).isVisible = false
             menu.findItem( R.id.view_menu ).isVisible = false
