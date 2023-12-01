@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             style="@style/bottom_app_bar_style"
-            app:menu="@menu/bottom_app_bar_menu"/>
+            app:menu="@menu/bottom_app_bar_menu" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_note_fab"

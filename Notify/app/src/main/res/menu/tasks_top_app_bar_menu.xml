@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/pin_menu"
+        android:icon="@drawable/ic_pin_24dp"
+        android:title="@string/pin"
+        android:contentDescription="@string/pin"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/reminder_menu"
+        android:icon="@drawable/ic_reminder_24dp"
+        android:title="@string/reminder"
+        android:contentDescription="@string/reminder"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/archive_menu"
+        android:icon="@drawable/ic_archive_24dp"
+        android:title="@string/archive"
+        android:contentDescription="@string/archive"
+        app:showAsAction="ifRoom" />
+
+</menu>

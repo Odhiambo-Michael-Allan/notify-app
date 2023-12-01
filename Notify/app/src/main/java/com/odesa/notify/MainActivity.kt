@@ -110,36 +110,27 @@ class MainActivity : AppCompatActivity() {
 
     private fun showAllViews() {
         hideBottomAppBar( false )
-        showAllMenus()
     }
 
     private fun configureTrashFragmentViews() {
         hideBottomAppBar( true )
-        showTrashFragmentMenus()
     }
 
     private fun configureArchiveFragmentViews() {
         hideBottomAppBar( true )
-        showAllMenus()
     }
 
     private fun configureSettingsFragmentViews() {
         hideBottomAppBar( true )
-        hideAllMenus()
     }
 
     private fun configureSearchFragmentViews() {
         hideBottomAppBar( true )
-        hideAllMenus()
     }
 
     private fun configureTasksFragmentViews() {
         hideFab( true )
-        with ( binding.bottomAppBar ) {
-            menu.findItem( R.id.nav_tasks ).isVisible = false
-            menu.findItem( R.id.microphone_menu ).isVisible = false
-            title
-        }
+        binding.bottomAppBar.isVisible = false
     }
 
     private fun hideBottomAppBar( hide: Boolean ) {
@@ -159,35 +150,7 @@ class MainActivity : AppCompatActivity() {
             binding.addNoteFab.visibility = View.VISIBLE
     }
 
-    private fun showAllMenus() {
-        with ( binding.toolbar ) {
-            menu.findItem( R.id.search_menu ).isVisible = true
-            menu.findItem( R.id.edit_menu ).isVisible = true
-            menu.findItem( R.id.view_menu ).isVisible = true
-            menu.findItem( R.id.sort_menu ).isVisible = true
-            menu.findItem( R.id.empty_trash_menu ).isVisible = false
-        }
-    }
 
-    private fun showTrashFragmentMenus() {
-        with( binding.toolbar ) {
-            menu.findItem( R.id.search_menu ).isVisible = false
-            menu.findItem( R.id.edit_menu ).isVisible = false
-            menu.findItem( R.id.view_menu ).isVisible = false
-            menu.findItem( R.id.sort_menu ).isVisible = false
-            menu.findItem( R.id.empty_trash_menu ).isVisible = true
-        }
-    }
-
-    private fun hideAllMenus() {
-        with( binding.toolbar ) {
-            menu.findItem( R.id.search_menu ).isVisible = false
-            menu.findItem( R.id.edit_menu ).isVisible = false
-            menu.findItem( R.id.view_menu ).isVisible = false
-            menu.findItem( R.id.sort_menu ).isVisible = false
-            menu.findItem( R.id.empty_trash_menu ).isVisible = false
-        }
-    }
 
 
     override fun onSupportNavigateUp(): Boolean {

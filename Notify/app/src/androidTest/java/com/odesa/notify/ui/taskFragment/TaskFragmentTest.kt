@@ -13,55 +13,28 @@ import com.odesa.notify.MainActivity
 import com.odesa.notify.R
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.not
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
 
 class TaskFragmentTest {
 
-    @Test
-    fun whenUserNavigatesToTasksFragment_theBottomAppBarIsDisplayed() {
-        val activityScenario = ActivityScenario.launch( MainActivity::class.java )
-        onView( withId( R.id.nav_tasks ) ).perform( click() )
-        onView( withId( R.id.bottom_app_bar ) ).check( matches( isDisplayed() ) )
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
+
+    @Before
+    fun setup() {
+        activityScenario = ActivityScenario.launch( MainActivity::class.java )
+    }
+
+    @After
+    fun cleanup() {
         activityScenario.close()
     }
 
-    @Test
-    fun whenUserNavigatesToTasksFragment_theAddNoteFabIsHidden() {
-        val activityScenario = ActivityScenario.launch( MainActivity::class.java )
-        onView( withId( R.id.nav_tasks ) ).perform( click() )
-        onView( withId( R.id.add_note_fab ) ).check( matches( not( isDisplayed() ) ) )
-        activityScenario.close()
-    }
-
-    @Test
-    fun whenUserNavigatesToTasksFragment_theTasksMenuIsHidden() {
-        val activityScenario = ActivityScenario.launch( MainActivity::class.java )
-        onView( withId( R.id.nav_tasks ) ).perform( click() )
-        activityScenario.onActivity {
-            with ( it.findViewById<BottomAppBar>( R.id.bottom_app_bar ) ) {
-                val tasksMenu = menu.findItem( R.id.nav_tasks )
-                assertThat( tasksMenu.isVisible, `is`( false ) )
-            }
-        }
-        activityScenario.close()
-    }
-
-    @Test
-    fun whenUserNavigatesToTasksFragment_theMicrophoneMenuIsHidden() {
-        val activityScenario = ActivityScenario.launch( MainActivity::class.java )
-        onView( withId( R.id.nav_tasks ) ).perform( click() )
-        activityScenario.onActivity {
-            with( it.findViewById<BottomAppBar>( R.id.bottom_app_bar ) ) {
-                val microphoneMenu = menu.findItem( R.id.microphone_menu )
-                assertThat( microphoneMenu.isVisible, `is`( false ) )
-            }
-        }
-        activityScenario.close()
-    }
+    // Displayed Views..
 
     @Test
     fun whenUserNavigatesToTasksFragment_thePinMenuIsDisplayed() {
-        val activityScenario = ActivityScenario.launch( MainActivity::class.java )
         onView( withId( R.id.nav_tasks ) ).perform( click() )
         activityScenario.onActivity {
             with ( it.findViewById<MaterialToolbar>( R.id.toolbar ) ) {
@@ -69,12 +42,10 @@ class TaskFragmentTest {
                 assertThat( pinMenu.isVisible, `is`( true ) )
             }
         }
-        activityScenario.close()
     }
 
     @Test
     fun whenUserNavigatesToTasksFragment_theReminderIconIsDisplayed() {
-        val activityScenario = ActivityScenario.launch( MainActivity::class.java )
         onView( withId( R.id.nav_tasks ) ).perform( click() )
         activityScenario.onActivity {
             with( it.findViewById<MaterialToolbar>( R.id.toolbar ) ) {
@@ -82,12 +53,10 @@ class TaskFragmentTest {
                 assertThat( reminderMenu.isVisible, `is`( true ) )
             }
         }
-        activityScenario.close()
     }
 
     @Test
     fun whenUserNavigatesToTasksFragment_theArchiveIconIsDisplayed() {
-        val activityScenario = ActivityScenario.launch( MainActivity::class.java )
         onView( withId( R.id.nav_tasks ) ).perform( click() )
         activityScenario.onActivity {
             with ( it.findViewById<MaterialToolbar>( R.id.toolbar ) ) {
@@ -95,32 +64,45 @@ class TaskFragmentTest {
                 assertThat( archiveMenu.isVisible, `is`( true ) )
             }
         }
-        activityScenario.close()
     }
 
     @Test
-    fun whenUserNavigatesToTasksFragment_theAddContentIconIsDisplayed() {
-        val activityScenario = ActivityScenario.launch( MainActivity::class.java )
+    fun whenUserNavigatesToTasksFragment_theAddMediaContentMenuIsDisplayed() {
         onView( withId( R.id.nav_tasks ) ).perform( click() )
-        activityScenario.onActivity {
-            with ( it.findViewById<BottomAppBar>( R.id.bottom_app_bar ) ) {
-                val addContentMenu = menu.findItem( R.id.add_content_menu )
-                assertThat( addContentMenu.isVisible, `is`( true ) )
-            }
-        }
-        activityScenario.close()
+        onView( withId( R.id.add_media_content_menu ) ).check( matches( isDisplayed() ) )
     }
 
     @Test
     fun whenUserNavigatesToTasksFragment_theBackgroundColorPaletteIsDisplayed() {
-        val activityScenario = ActivityScenario.launch( MainActivity::class.java )
         onView( withId( R.id.nav_tasks ) ).perform( click() )
-        activityScenario.onActivity {
-            with ( it.findViewById<BottomAppBar>( R.id.bottom_app_bar ) ) {
-                val backgroundPaletteMenu = menu.findItem( R.id.background_palette_menu )
-                assertThat( backgroundPaletteMenu.isVisible, `is`( true ) )
-            }
-        }
-        activityScenario.close()
+        onView( withId( R.id.background_color_palette_menu ) ).check( matches( isDisplayed() ) )
     }
+
+    @Test
+    fun whenUserNavigatesToTasksFragment_theEditedTextViewIsDisplayed() {
+        onView( withId( R.id.nav_tasks ) ).perform( click() )
+        onView( withId( R.id.last_edited_text_view ) ).check( matches( isDisplayed() ) )
+    }
+
+    @Test
+    fun whenUserNavigatesToTasksFragment_theTasksFragmentBottomAppBarIsDisplayed() {
+        onView( withId( R.id.nav_tasks ) ).perform( click() )
+        onView( withId( R.id.fragment_tasks_bottom_app_bar ) ).check( matches( isDisplayed() ) )
+    }
+
+    // Hidden Views..
+
+    @Test
+    fun whenUserNavigatesToTasksFragment_theAddNoteFabIsHidden() {
+        onView( withId( R.id.nav_tasks ) ).perform( click() )
+        onView( withId( R.id.add_note_fab ) ).check( matches( not( isDisplayed() ) ) )
+    }
+
+    @Test
+    fun whenUserNavigatesToTasksFragment_theMainActivityBottomAppBarIsHidden() {
+        onView( withId( R.id.nav_tasks ) ).perform( click() )
+        onView( withId( R.id.bottom_app_bar ) ).check( matches( not( isDisplayed() ) ) )
+    }
+
+
 }

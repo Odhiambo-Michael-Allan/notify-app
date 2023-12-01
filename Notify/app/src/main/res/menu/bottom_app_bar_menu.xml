@@ -18,23 +18,11 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/insert_photo"
+        android:id="@+id/insert_photo_menu"
         android:icon="@drawable/ic_insert_photo_24"
         android:title="@string/insert_photo"
         android:contentDescription="@string/content_description_insert_photo"
         app:showAsAction="ifRoom"/>
 
-    <item
-        android:id="@+id/add_content_menu"
-        android:icon="@drawable/ic_add_content_24dp"
-        android:title="@string/add_content"
-        android:contentDescription="@string/add_content"
-        app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/background_palette_menu"
-        android:icon="@drawable/ic_background_palette_menu_24dp"
-        android:title="@string/background_palette"
-        android:contentDescription="@string/background_palette"
-        app:showAsAction="ifRoom" />
 </menu>

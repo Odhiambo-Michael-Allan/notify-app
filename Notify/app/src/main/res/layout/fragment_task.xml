@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/task_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,4 +13,55 @@
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/fragment_tasks_bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        style="@style/bottom_app_bar_style" >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/add_media_content_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_content_24dp"
+                android:padding="8dp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/background_color_palette_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_background_palette_menu_24dp"
+                android:padding="8dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/last_edited_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edited 7:30am"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dp"/>
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_margin="8dp"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/more_options_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_more_options"
+                android:padding="8dp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

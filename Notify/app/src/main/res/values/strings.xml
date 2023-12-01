@@ -30,6 +30,7 @@
     <string name="pin">Pin</string>
     <string name="add_content">Add Content</string>
     <string name="background_palette">Background Palette</string>
+    <string name="delete">Delete</string>
 
     <string name="mail_subheader_title">Mail</string>
     <!-- TODO: Remove or change this placeholder text -->

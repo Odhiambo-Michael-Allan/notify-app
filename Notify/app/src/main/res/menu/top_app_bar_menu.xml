@@ -11,27 +11,6 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/pin_menu"
-        android:icon="@drawable/ic_pin_24dp"
-        android:title="@string/pin"
-        android:contentDescription="@string/pin"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/reminder_menu"
-        android:icon="@drawable/ic_reminder_24dp"
-        android:title="@string/reminder"
-        android:contentDescription="@string/reminder"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/archive_menu"
-        android:icon="@drawable/ic_archive_24dp"
-        android:title="@string/archive"
-        android:contentDescription="@string/archive"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/edit_menu"
         android:title="@string/edit"
         android:contentDescription="@string/content_description_edit"
@@ -66,12 +45,5 @@
         android:contentDescription="@string/content_description_sort"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/empty_trash_menu"
-        android:title="@string/empty_trash"
-        android:contentDescription="@string/empty_trash"
-        android:visible="false"
-        app:showAsAction="never"
-        tools:visible="true" />
 
 </menu>
