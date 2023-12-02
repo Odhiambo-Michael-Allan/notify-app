@@ -1,12 +1,15 @@
 package com.odesa.notify.ui.taskFragment
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.odesa.notify.R
+import com.odesa.notify.databinding.FragmentTaskListItemBinding
 import com.odesa.notify.model.Task
 
 
@@ -17,20 +20,29 @@ class TasksAdapter : ListAdapter<Task, TasksAdapter.TaskViewHolder>( TaskDiffCal
     }
 
     override fun onCreateViewHolder( parent: ViewGroup, viewType: Int ): TaskViewHolder {
-        val view = LayoutInflater.from( parent.context )
-            .inflate( R.layout.fragment_task_list_item, parent, false )
-        return TaskViewHolder( view )
+        return TaskViewHolder.from( parent )
     }
 
-    override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
+    override fun onBindViewHolder( holder: TaskViewHolder, position: Int ) {
         val task = getItem( position )
         holder.bind( task )
     }
 
-    class TaskViewHolder( taskView: View ) : RecyclerView.ViewHolder( taskView ) {
+    class TaskViewHolder constructor( val binding: FragmentTaskListItemBinding )
+        : RecyclerView.ViewHolder( binding.root ) {
 
         fun bind( task: Task ) {
+            if ( task.isEmpty )
+                binding.taskDescriptionEdittext.requestFocus()
+        }
 
+        companion object {
+            fun from( parent: ViewGroup ): TaskViewHolder {
+                val layoutInflater = LayoutInflater.from( parent.context )
+                val binding = FragmentTaskListItemBinding.inflate(
+                    layoutInflater, parent, false )
+                return TaskViewHolder( binding )
+            }
         }
     }
 

@@ -1,22 +1,27 @@
 package com.odesa.notify.ui.taskFragment
 
-import androidx.recyclerview.widget.RecyclerView
+import android.content.Context
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
+import androidx.test.espresso.matcher.ViewMatchers.hasFocus
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.odesa.notify.MainActivity
 import com.odesa.notify.R
+import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.not
+import org.hamcrest.TypeSafeMatcher
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import org.hamcrest.Description
 
 class TaskFragmentTest {
 
@@ -161,9 +166,10 @@ class TaskFragmentTest {
     }
 
     @Test
-    fun whenUserNavigatesToTheTasksFragment_theAddListItemTextViewIsDisplayed() {
+    fun whenUserNavigatesToTheTasksFragmentToCreateNewTask_theDefaultTaskItemEditTextHasFocusAndKeyboard() {
         onView( withId( R.id.nav_tasks ) ).perform( click() )
-        onView( withId( R.id.add_list_item_text_view ) ).check( matches( isDisplayed() ) )
+        onView( withId( R.id.task_description_edittext ) ).check( matches( hasFocus() ) )
+        onView( withId( R.id.task_description_edittext ) ).check( matches( isKeyboardDisplayed() ) )
     }
 
 
@@ -179,6 +185,21 @@ class TaskFragmentTest {
     fun whenUserNavigatesToTasksFragment_theMainActivityBottomAppBarIsHidden() {
         onView( withId( R.id.nav_tasks ) ).perform( click() )
         onView( withId( R.id.bottom_app_bar ) ).check( matches( not( isDisplayed() ) ) )
+    }
+
+    // Custom Matcher to check if the soft keyboard is displayed
+    private fun isKeyboardDisplayed(): Matcher<View> {
+        return object : TypeSafeMatcher<View>() {
+            override fun matchesSafely( item: View ): Boolean {
+                val imm = item.context.getSystemService(
+                    Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                return imm.isActive( item )
+            }
+
+            override fun describeTo( description: Description ) {
+                description.appendText( "soft keyboard is displayed" )
+            }
+        }
     }
 
 

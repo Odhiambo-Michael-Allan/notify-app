@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import com.odesa.notify.R
 import com.odesa.notify.databinding.FragmentTaskBinding
 
@@ -56,6 +57,10 @@ class TaskFragment : Fragment() {
 
     private fun setupTasksAdapter() {
         binding.tasksRecyclerview.adapter = TasksAdapter()
+    }
+
+    private fun viewingExistingTask(): Boolean {
+        return false
     }
 
     @Deprecated( "Deprecated in Java" )
