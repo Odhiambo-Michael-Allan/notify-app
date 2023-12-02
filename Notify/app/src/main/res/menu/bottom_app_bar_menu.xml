@@ -12,14 +12,14 @@
 
     <item
         android:id="@+id/microphone_menu"
-        android:icon="@drawable/ic_mic_24_dp"
+        android:icon="@drawable/ic_mic"
         android:title="@string/microphone"
         android:contentDescription="@string/content_description_microphone"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/insert_photo_menu"
-        android:icon="@drawable/ic_insert_photo_24"
+        android:icon="@drawable/ic_insert_photo"
         android:title="@string/insert_photo"
         android:contentDescription="@string/content_description_insert_photo"
         app:showAsAction="ifRoom"/>

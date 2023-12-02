@@ -35,6 +35,7 @@ android {
 
     buildFeatures {
         buildConfig = true
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -56,6 +57,8 @@ android {
 
 dependencies {
 
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
     val roomVersion = "2.6.0"
     val lifecycleVersion = "2.6.2"
     val navigationVersion = "2.7.5"

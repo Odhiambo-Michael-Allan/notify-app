@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/hide_checkboxes_menu"
+        android:title="@string/hide_checkbox"
+        android:contentDescription="@string/hide_checkbox"
+        app:showAsAction="never" />
+
+</menu>

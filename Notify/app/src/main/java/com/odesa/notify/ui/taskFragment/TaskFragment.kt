@@ -24,13 +24,37 @@ class TaskFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentTaskBinding.inflate( inflater, container, false )
         return binding.root
     }
 
-    override fun onCreateOptionsMenu( menu: Menu, inflater: MenuInflater ) {
+    override fun onViewCreated( view: View, savedInstanceState: Bundle? ) {
+        super.onViewCreated( view, savedInstanceState )
+        setupMoreOptionsMenu()
+    }
+
+    private fun setupMoreOptionsMenu() {
+        binding.moreOptionsMenu.setOnClickListener {
+            val modalBottomSheet = MoreOptionsModalBottomSheet()
+            modalBottomSheet.show( requireActivity().supportFragmentManager,
+                MoreOptionsModalBottomSheet.TAG )
+        }
+        binding.addMediaContentMenu.setOnClickListener {
+            val modalBottomSheet = AddMediaContentModalBottomSheet.newInstance()
+            modalBottomSheet.show( requireActivity().supportFragmentManager,
+                AddMediaContentModalBottomSheet.TAG )
+        }
+        binding.backgroundColorPaletteMenu.setOnClickListener {
+            val modalBottomSheet = BackgroundColorListDialogFragment.newInstance( 10 )
+            modalBottomSheet.show( requireActivity().supportFragmentManager,
+                BackgroundColorListDialogFragment.TAG )
+        }
+    }
+
+    @Deprecated( "Deprecated in Java" )
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater ) {
         menu.clear()
         inflater.inflate( R.menu.tasks_top_app_bar_menu, menu )
     }

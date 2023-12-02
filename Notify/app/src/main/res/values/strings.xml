@@ -31,6 +31,17 @@
     <string name="add_content">Add Content</string>
     <string name="background_palette">Background Palette</string>
     <string name="delete">Delete</string>
+    <string name="make_copy">Make a copy</string>
+    <string name="labels">Labels</string>
+    <string name="help_and_feedback">Help &amp; Feedback</string>
+    <string name="share">Share</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="add_image">Add Image</string>
+    <string name="drawing">Drawing</string>
+    <string name="recording">Recording</string>
+    <string name="hide_checkbox">Hide Checkboxes</string>
+    <string name="title">Title</string>
+    <string name="list_item">List Item</string>
 
     <string name="mail_subheader_title">Mail</string>
     <!-- TODO: Remove or change this placeholder text -->

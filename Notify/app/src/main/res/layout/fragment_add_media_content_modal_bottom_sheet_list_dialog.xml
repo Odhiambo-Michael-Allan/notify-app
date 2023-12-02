@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/add_media_content_bottom_sheet_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/take_photo_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/take_photo"
+        android:padding="16dp"
+        android:drawableStart="@drawable/ic_take_photo"
+        android:drawablePadding="8dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/add_image_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_image"
+        android:padding="16dp"
+        android:drawableStart="@drawable/ic_insert_photo"
+        android:drawablePadding="8dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/add_drawing_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/drawing"
+        android:padding="16dp"
+        android:drawableStart="@drawable/ic_brush"
+        android:drawablePadding="8dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/recording_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/recording"
+        android:padding="16dp"
+        android:drawableStart="@drawable/ic_mic"
+        android:drawablePadding="8dp" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
