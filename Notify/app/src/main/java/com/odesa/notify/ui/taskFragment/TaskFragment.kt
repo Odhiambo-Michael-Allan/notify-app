@@ -33,6 +33,7 @@ class TaskFragment : Fragment() {
     override fun onViewCreated( view: View, savedInstanceState: Bundle? ) {
         super.onViewCreated( view, savedInstanceState )
         setupMoreOptionsMenu()
+        setupTasksAdapter()
     }
 
     private fun setupMoreOptionsMenu() {
@@ -51,6 +52,10 @@ class TaskFragment : Fragment() {
             modalBottomSheet.show( requireActivity().supportFragmentManager,
                 BackgroundColorListDialogFragment.TAG )
         }
+    }
+
+    private fun setupTasksAdapter() {
+        binding.tasksRecyclerview.adapter = TasksAdapter()
     }
 
     @Deprecated( "Deprecated in Java" )
