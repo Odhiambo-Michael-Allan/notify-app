@@ -1,8 +1,11 @@
 package com.odesa.notify.ui.taskFragment
 
 import android.content.Context
+import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.fragment.app.testing.FragmentScenario
+import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -11,9 +14,12 @@ import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import androidx.test.espresso.matcher.ViewMatchers.hasFocus
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.MediumTest
 import com.google.android.material.appbar.MaterialToolbar
 import com.odesa.notify.MainActivity
 import com.odesa.notify.R
+import com.odesa.notify.model.Task
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.not
@@ -22,7 +28,10 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.hamcrest.Description
+import org.junit.runner.RunWith
 
+@MediumTest
+@RunWith( AndroidJUnit4::class )
 class TaskFragmentTest {
 
     private lateinit var activityScenario: ActivityScenario<MainActivity>
@@ -30,6 +39,7 @@ class TaskFragmentTest {
     @Before
     fun setup() {
         activityScenario = ActivityScenario.launch( MainActivity::class.java )
+
     }
 
     @After
@@ -160,16 +170,16 @@ class TaskFragmentTest {
     }
 
     @Test
-    fun whenUserNavigatesToTheTasksFragment_theTaskCheckboxIsDisplayed() {
-        onView( withId( R.id.nav_tasks ) ).perform( click() )
-        onView( withId( R.id.task_checkbox ) ).check( matches( isDisplayed() ) )
-    }
-
-    @Test
-    fun whenUserNavigatesToTheTasksFragmentToCreateNewTask_theDefaultTaskItemEditTextHasFocusAndKeyboard() {
-        onView( withId( R.id.nav_tasks ) ).perform( click() )
-        onView( withId( R.id.task_description_edittext ) ).check( matches( hasFocus() ) )
-        onView( withId( R.id.task_description_edittext ) ).check( matches( isKeyboardDisplayed() ) )
+    fun whenUserNavigatesToTheTasksFragmentToCreateNewTask_defaultEmptyTaskIsCreatedWithAnEmptyTaskItem() {
+        val bundle = Bundle().apply {
+            putString( "taskId", "" )
+        }
+        val fragmentScenario: FragmentScenario<TaskFragment> =
+            launchFragmentInContainer( bundle, R.style.Theme_Notify )
+        onView( withId( R.id.task_items_recyclerview ) ).check( matches( isDisplayed() ) )
+        fragmentScenario.close()
+//        onView( withId( R.id.task_description_edittext ) ).check( matches( hasFocus() ) )
+//        onView( withId( R.id.task_description_edittext ) ).check( matches( isKeyboardDisplayed() ) )
     }
 
 

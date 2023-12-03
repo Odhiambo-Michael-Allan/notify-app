@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         setupAddNoteFab()
         setupTasksMenu()
         setupNavControllerListener()
+//        WindowCompat.getInsetsController( window, )
     }
 
     private fun setupAppBar() {

@@ -2,7 +2,7 @@ plugins {
     id( "com.android.application" )
     id( "org.jetbrains.kotlin.android" )
     id( "kotlin-kapt" )
-    id( "androidx.navigation.safeargs.kotlin" )
+    id( "androidx.navigation.safeargs" )
 }
 
 android {
@@ -53,6 +53,12 @@ android {
         enable = true
         enableForTests = true
     }
+
+    testOptions.unitTests {
+        isIncludeAndroidResources = true
+        // required to keep your unit tests running as you add idling resource code to your app code
+        isReturnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -65,6 +71,7 @@ dependencies {
     val espressoVersion = "3.5.1"
     val hamcrestVersion = "2.2"
     val timberVersion = "5.0.1"
+    val fragmentVersion = "1.6.2"
 
     // App Dependencies.
     implementation( "androidx.core:core-ktx:1.12.0" )
@@ -97,4 +104,8 @@ dependencies {
     androidTestImplementation( "androidx.test.ext:junit:1.1.5" )
     androidTestImplementation( "androidx.test.espresso:espresso-core:$espressoVersion" )
     androidTestImplementation( "androidx.test.espresso:espresso-contrib:$espressoVersion" )
+
+    // Testing code should not be included in the main code.
+    // Once https://issuetracker.google.com/128612536 is fixed this can be fixed.
+    implementation ( "androidx.fragment:fragment-testing:$fragmentVersion" )
 }

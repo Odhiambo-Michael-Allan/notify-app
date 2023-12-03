@@ -1,5 +1,6 @@
 package com.odesa.notify.ui.taskFragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,7 +8,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import androidx.navigation.fragment.navArgs
 import com.odesa.notify.R
 import com.odesa.notify.databinding.FragmentTaskBinding
 
@@ -15,6 +16,7 @@ import com.odesa.notify.databinding.FragmentTaskBinding
 class TaskFragment : Fragment() {
 
     private lateinit var binding: FragmentTaskBinding
+    private val args: TaskFragmentArgs by navArgs()
 
     override fun onCreate( savedInstanceState: Bundle? ) {
         super.onCreate( savedInstanceState )
@@ -56,11 +58,15 @@ class TaskFragment : Fragment() {
     }
 
     private fun setupTasksAdapter() {
-        binding.tasksRecyclerview.adapter = TasksAdapter()
+        binding.taskItemsRecyclerview.adapter = TaskItemAdapter()
     }
 
     private fun viewingExistingTask(): Boolean {
         return false
+    }
+
+    override fun onAttach( context: Context ) {
+        super.onAttach( context )
     }
 
     @Deprecated( "Deprecated in Java" )

@@ -47,7 +47,7 @@ class RemindersFragment : Fragment() {
 
     private fun navigateToTasksFragment() {
         findNavController().navigate(
-            RemindersFragmentDirections.actionNavReminderToNavTask()
+            RemindersFragmentDirections.actionNavReminderToNavTask( "" )
         )
     }
 

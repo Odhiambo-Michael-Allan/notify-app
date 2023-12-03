@@ -50,7 +50,7 @@ class NotesFragment : Fragment() {
     }
 
     private fun navigateToTasksFragment() {
-        findNavController().navigate( NotesFragmentDirections.actionNavNotesToNavTask() )
+        findNavController().navigate( NotesFragmentDirections.actionNavNotesToNavTask( "" ) )
     }
 
     private fun navigateToSearchFragment() {

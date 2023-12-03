@@ -17,6 +17,11 @@
         <action
             android:id="@+id/action_nav_notes_to_nav_search"
             app:destination="@id/nav_search" />
+
+        <argument
+            android:name="taskId"
+            app:argType="string" />
+
     </fragment>
 
     <fragment
@@ -61,7 +66,13 @@
     <fragment
         android:id="@+id/nav_tasks"
         android:name="com.odesa.notify.ui.taskFragment.TaskFragment"
-        android:label="@string/task" />
+        android:label="@string/task" >
+
+        <argument
+            android:name="taskId"
+            app:argType="string" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/nav_search"
