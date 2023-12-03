@@ -1,5 +1,6 @@
 package com.odesa.notify
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -50,7 +51,6 @@ class MainActivity : AppCompatActivity() {
         setupAddNoteFab()
         setupTasksMenu()
         setupNavControllerListener()
-//        WindowCompat.getInsetsController( window, )
     }
 
     private fun setupAppBar() {
@@ -167,3 +167,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+//const val TASK_LIST_ITEM_VIEW = Activity.RESULT_FIRST_USER + 1
+//const val TASK_LIST_ITEM = Activity.RESULT_FIRST_USER + 2
+//const val EDIT_RESULT_OK = Activity.RESULT_FIRST_USER + 3

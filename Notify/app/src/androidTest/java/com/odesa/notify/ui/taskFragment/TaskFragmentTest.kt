@@ -191,6 +191,15 @@ class TaskFragmentTest {
         fragmentScenario.close()
     }
 
+    @Test
+    fun whenUserNavigatesToTheTasksFragmentToCreateNewTask_addTaskItemViewIsDisplayed() {
+        val bundle = Bundle().apply { putString( "taskId", "" ) }
+        val fragmentScenario: FragmentScenario<TaskFragment> =
+            launchFragmentInContainer( bundle, R.style.Theme_Notify )
+        onView( withId( R.id.add_task_item ) ).check( matches( isDisplayed() ) )
+        fragmentScenario.close()
+    }
+
 
     // Hidden Views..
 

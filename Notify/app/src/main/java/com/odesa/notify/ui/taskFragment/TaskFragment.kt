@@ -63,15 +63,15 @@ class TaskFragment : Fragment() {
     private fun setupTasksAdapter() {
         val adapter = TaskItemAdapter()
         binding.taskItemsRecyclerview.adapter = adapter
-        if ( !viewingExistingTask() ) {
-            val task = Task()
-            adapter.submitList( listOf( TaskItem( taskId = task.id ) ) )
-        }
+//        if ( !viewingExistingTask() ) {
+//            val task = Task()
+//            adapter.submitList( listOf( TaskItem( taskId = task.id ) ) )
+//        }
     }
 
-    private fun viewingExistingTask(): Boolean {
-        return args.taskId.isNotEmpty()
-    }
+//    private fun viewingExistingTask(): Boolean {
+//        return args.taskId.isNotEmpty()
+//    }
 
     override fun onAttach( context: Context ) {
         super.onAttach( context )
