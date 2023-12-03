@@ -11,6 +11,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.odesa.notify.R
 import com.odesa.notify.databinding.FragmentTaskBinding
+import com.odesa.notify.model.Task
+import com.odesa.notify.model.TaskItem
+import timber.log.Timber
 
 
 class TaskFragment : Fragment() {
@@ -58,11 +61,16 @@ class TaskFragment : Fragment() {
     }
 
     private fun setupTasksAdapter() {
-        binding.taskItemsRecyclerview.adapter = TaskItemAdapter()
+        val adapter = TaskItemAdapter()
+        binding.taskItemsRecyclerview.adapter = adapter
+        if ( !viewingExistingTask() ) {
+            val task = Task()
+            adapter.submitList( listOf( TaskItem( taskId = task.id ) ) )
+        }
     }
 
     private fun viewingExistingTask(): Boolean {
-        return false
+        return args.taskId.isNotEmpty()
     }
 
     override fun onAttach( context: Context ) {

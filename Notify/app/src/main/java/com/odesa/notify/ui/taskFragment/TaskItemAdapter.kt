@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.odesa.notify.viewExtensions.showSoftKeyboard
 import com.odesa.notify.databinding.FragmentTaskListItemBinding
 import com.odesa.notify.model.TaskItem
 
@@ -16,7 +17,7 @@ class TaskItemAdapter : ListAdapter<TaskItem, TaskItemAdapter.TaskItemViewHolder
         return TaskItemViewHolder.from( parent )
     }
 
-    override fun onBindViewHolder(holder: TaskItemViewHolder, position: Int ) {
+    override fun onBindViewHolder( holder: TaskItemViewHolder, position: Int ) {
         val task = getItem( position )
         holder.bind( task )
     }
@@ -24,8 +25,12 @@ class TaskItemAdapter : ListAdapter<TaskItem, TaskItemAdapter.TaskItemViewHolder
     class TaskItemViewHolder constructor( val binding: FragmentTaskListItemBinding )
         : RecyclerView.ViewHolder( binding.root ) {
 
-        fun bind( task: TaskItem ) {
-
+        fun bind( taskItem: TaskItem ) {
+            binding.taskItemDescriptionEdittext.apply {
+                setText( taskItem.description )
+                if ( taskItem.description.isEmpty() )
+                    showSoftKeyboard()
+            }
         }
 
         companion object {

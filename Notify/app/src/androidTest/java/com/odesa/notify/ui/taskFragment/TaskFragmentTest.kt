@@ -9,11 +9,16 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.contrib.`RecyclerViewActions$MatchedItem-IA`
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
+import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.espresso.matcher.ViewMatchers.hasFocus
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.google.android.material.appbar.MaterialToolbar
@@ -177,9 +182,13 @@ class TaskFragmentTest {
         val fragmentScenario: FragmentScenario<TaskFragment> =
             launchFragmentInContainer( bundle, R.style.Theme_Notify )
         onView( withId( R.id.task_items_recyclerview ) ).check( matches( isDisplayed() ) )
+        onView( withId( R.id.task_item_description_edittext ) ).check( matches( isDisplayed() ) )
+//        onView( withId( R.id.task_items_recyclerview ) )
+//            .perform( RecyclerViewActions
+//                .scrollTo<TaskItemAdapter.TaskItemViewHolder>(
+//                    hasDescendant( withText( "" ) ) ) )
+//        onView( hasDescendant( withText( "" ) ) ).check( matches( isDisplayed() ) )
         fragmentScenario.close()
-//        onView( withId( R.id.task_description_edittext ) ).check( matches( hasFocus() ) )
-//        onView( withId( R.id.task_description_edittext ) ).check( matches( isKeyboardDisplayed() ) )
     }
 
 
